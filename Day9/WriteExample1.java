@@ -7,6 +7,7 @@ public class WriteExample1 {
 
 	public static void main(String[] args) throws Exception{
 		OutputStream os1 = new FileOutputStream("C:/Temp2/test2.txt");
+//		파일이 없으면 자동으로 만든다.
 		OutputStream os2 = new FileOutputStream("C:/Temp2/test3.txt");
 
 		
@@ -35,3 +36,4 @@ public class WriteExample1 {
 	}
 
 }
+
