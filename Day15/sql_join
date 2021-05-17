@@ -1,0 +1,37 @@
+
+--이너조인
+SELECT hr.employees.employee_id, hr.employees.last_name, hr.employees.department_id,
+       hr.departments.department_name
+FROM hr.employees INNER JOIN hr.departments
+ON (hr.employees.department_id = hr.departments.department_id)
+ORDER BY 3;
+
+SELECT hr.employees.employee_id, hr.employees.last_name, hr.employees.department_id, hr.departments.department_name
+FROM hr.employees INNER JOIN hr.departments
+ON (hr.employees.department_id = hr.departments.department_id)
+ORDER BY 3;
+
+
+--크로스 조인
+SELECT e.employee_id, e.last_name, e.department_id, d.department_id, d.department_name
+FROM hr.employees e CROSS JOIN departments d
+WHERE e.department_id = 90 AND d.department_id = 10;
+
+SELECT e.last_name, d.department_name FROM hr.employees e JOIN hr.departments d ON 
+(d.department_id = d.department_id) WHERE e.department_id =90;
+
+SELECT e.employee_id, e.last_name, e.department_id, d.department_id, d.department_name
+FROM hr.employees e FULL OUTER JOIN departments d ON (e.department_id=d.department_id);
+
+SELECT e.last_name, l.city
+FROM hr.employees e JOIN hr.departments d ON (e.department_id = d.department_id)
+JOIN hr.locations l ON (d.location_id = l.location_id)
+WHERE e.employee_id IN (100,150,200);
+
+SELECT last_name, job_id      FROM hr.employees      
+WHERE department_id = (SELECT department_id FROM hr.employees WHERE employee_id=100);
+
+SELECT a.last_name AS "BUHA", b.last_name AS "BOSS"
+     FROM  hr.employees a INNER JOIN hr.employees b
+                         ON (a.manager_id= b.employee_id)
+     WHERE a.employee_id = 101 ;
