@@ -1,0 +1,57 @@
+select employee_id, last_name, salary, email from hr.emplyee;
+
+select employee_id, first_name, salary, salary*0.05, 12*(salary+100) from hr.employees where department_id = 90;
+
+select * from hr.departments;
+
+select employee_id, last_name, salary, commission_pct from hr.employees where department_id=20;
+
+select last_name || JOB_ID AS "RESULT" from hr.employees where employee_id=100;
+
+select department_id, job_id from hr.employees where department_id=30;
+
+select last_name, job_id, department_id from hr.employees where last_name = 'Whalen' and department_id=10;
+
+select last_name, job_id, department_id from hr.employees where last_name = 'WHALEN' and department_id = 10;
+
+select last_name, salary from hr.employees where salary<=3000;
+
+select last_name, salary from hr.employees where salary between 4100 and 4500;
+
+select employee_id, last_name, salary, manager_id from hr.employees where manager_id in (100,101,201);
+
+select last_name, salary from hr.employees where last_name like 'A%';
+
+select last_name, salary from hr.employees where last_name like '_b_%';
+
+drop table hr.test01 purge;
+
+select last_name from hr.employees where manager_id is null;
+
+select last_name, salary from hr.employees where manager_id is null and salary > 10000;
+
+select last_name from hr.employees where manager_id is not null;
+
+select employee_id, last_name, salary from hr.employees where department_id = 60 order by salary asc;
+
+select last_name, upper(first_name) first_name from hr.employees where department_id =90;
+
+select sum(salary) from hr.employees where department_id=90;
+
+select employee_id, last_name, department_id from hr.employees where lower(last_name) = 'higgins';
+
+select substr('20080815',1,4), substr('20080815',5,2),substr('20080815',-2)  from dual;
+
+select last_name, upper(concat(substr(last_name,1,8), '_US)) from hr.employees where department_id =10;
+
+select * from hr.employees where hire_date>= '2008/01/01';
+
+select sysdate from dual;
+
+select * from hr.employees where hire_date>= to_date('2008/01/01','YYYY/MM/DD'); 
+
+select last_name, job_id, salary, (case job_id when 'IT_PROG' then 1.10*salary
+                                                       when 'ST_CLERK' then 1.10*salary
+                                                       when 'SA_REP' then 1.10*salary 
+                                         END) as "revised_salary" 
+from hr.employees;
