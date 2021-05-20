@@ -1,0 +1,24 @@
+order by 쓰지않고 정렬하기   
+   
+   @Override
+   public int compareTo(MemberVO memberVO) {
+      //가입입자 기준 오름차순 정렬
+      //return this.joinDate.compareTo(memberVO.joinDate);
+      //가입입자기준 내림차순 정렬
+      return memberVO.joinDate.compareTo(this.joinDate);
+      //아이디 기준 오름차순 정렬(대소문자 구분없이)
+      //return this.id.toLowerCase().compareTo(memberVO.id.toLowerCase());
+      //아이디기준 내림차순 정렬(대소문자 구분없이)
+      //return memberVO.id.toLowerCase().compareTo(this.id.toLowerCase());
+      
+      //가입일로 오름차순정렬 후, 같은 가입일에서 아이디 값으로 오름차순정렬.
+      //String strMjoinDate1 = this.joinDate.toString();
+      //String strMjoinDate2 = memberVO.joinDate.toString();
+      //return (strMjoinDate1+this.id.toLowerCase())
+      //       .compareTo(strMjoinDate2+memberVO.id.toLowerCase());
+      //가입일로 내림차순정렬 후, 같은 가입일에서 아이디 값으로 내림차순정렬.
+      //String strMjoinDate1 = this.joinDate.toString();
+      //String strMjoinDate2 = memberVO.joinDate.toString();
+      //return (strMjoinDate2+memberVO.id.toLowerCase())
+      //      .compareTo(strMjoinDate1+this.id.toLowerCase());
+   }
